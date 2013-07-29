@@ -13,17 +13,13 @@ indent () {
 # Downloads luvit from github:
 #    https://github.com/norefle/heroku-buildpack-luvit/raw/master/luvit/luvit
 
-dirname $0 | indent
-echo $1 | indent
+echo "-----> Fetching luvit."
+mkdir -p $1/bin | indent
+cd $1/bin
+curl --silent -O --location https://github.com/norefle/heroku-buildpack-luvit/raw/master/luvit/luvit
 
-if [ -f luvit/luvit ]; then
-  mkdir -p $1/bin | indent
-  cp luvit/luvit $1/bin/luvit | indent
-  chmod +x $1/bin/luvit
-  echo "-----> Found luvit v$($1/bin/luvit --version)"
-else
-  echo "There is no luvit's binary to execute." | indent
-  exit 1
-fi
+chmod +x luvit
+
+echo "-----> luvit v$(luvit --version) was configured successfully."
 
 
