@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Usage bin/detect BUILD_DIR
+# Script has to return with exit code 0 on success, 1 otherwise.
+# Script also has to print human readable framework name.
+
+# We use package.lua in root as mark of luvit app.
+if [ -f $1/package.lua ]; then
+    echo "luvit"
+    exit 0
+else
+    exit 1
+fi
+

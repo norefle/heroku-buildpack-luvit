@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Usage bin/release BUILD_DIR
+# Scripts has to return YAML configaration.
+
+cat << EOF
+---
+default_process_types:
+  web: bin/luvit server.lua $PORT
+config_vars:
+  PATH: "bin:/usr/bin:/bin"
+EOF

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Usage bin/compile BUILD_DIR CACHE_DIR
+# Downloads, compiles and configures environment for luvit applications.
+# All output will be displayed for user.
+# Output strings have to match Heroku's style.
+
+# Append indentation to match Heroku style.
+indent () {
+    sed -u 's/^/       /'
+}
+
+# Downloads luvit from github:
+#    https://github.com/norefle/heroku-buildpack-luvit/raw/master/luvit/luvit
+
+dirname $0 | indent
+
+if [ -f luvit/luvit ]; then
+  mkdir -p $1/bin | indent
+  cp luvit/luvit $1/bin/luvit | indent
+  chmod +x $1/bin/luvit
+  echo "-----> Found luvit v$($1/bin/luvit --version)"
+else
+  echo "There is no luvit's binary to execute." | indent
+  exit 1
+fi
+
+
