@@ -14,6 +14,7 @@ indent () {
 #    https://github.com/norefle/heroku-buildpack-luvit/raw/master/luvit/luvit
 
 dirname $0 | indent
+echo $1 | indent
 
 if [ -f luvit/luvit ]; then
   mkdir -p $1/bin | indent
