@@ -6,7 +6,7 @@
 cat << EOF
 ---
 default_process_types:
-  web: bin/luvit server.lua $PORT
+  web: luvit server.lua $PORT
 config_vars:
   PATH: "bin:/usr/bin:/bin"
 EOF
